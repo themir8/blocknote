@@ -1,2 +1,2 @@
 # blocknote
-BlockNote is Notes app on Golang
+BlockNote is Notes app on Django
