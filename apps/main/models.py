@@ -1,9 +1,16 @@
+import string
+import random
+
 from django.db import models as db
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.utils.text import slugify
 from django.utils import timezone
 
+
+def rand_slug():
+    return ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(6))
 
 
 class Visitor(db.Model):
@@ -30,21 +37,26 @@ def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
 
 
-class Post(db.Model):
-    """Посты"""
+class Article(db.Model):
     title = db.CharField("Название", max_length=50)
     text = db.TextField("Описание")
     url = db.SlugField("Ссылка", max_length=60, unique=True)
-    draft = db.BooleanField("Черновик")
+    draft = db.BooleanField("Черновик", default=False)
     author = db.ForeignKey(
         User, verbose_name = "Имя ползователя", on_delete=db.SET_NULL, null=True
     )
 
-    created_date = db.DateTimeField("Дата", default=timezone.now)
+    created_date = db.DateTimeField("Дата")
 
 
     def __str__(self):
         return self.title
+
+
+    def save(self, *args, **kwargs):
+        if not self.url:
+            self.url = slugify(rand_slug() + "-" + self.title)
+        super(Article, self).save(*args, **kwargs)
 
 
     class Meta:

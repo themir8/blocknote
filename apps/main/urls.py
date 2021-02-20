@@ -1,7 +1,8 @@
 from django.urls import path, include
-from main.views import MainView
+from main.views import Create, ArticleViewEdit
 
 
 urlpatterns = [
-    path('', MainView.as_view(), name="index"),
+    path('', Create, name="index"),
+    path('<slug:slug>', ArticleViewEdit, name="article"),
 ]
