@@ -2,12 +2,17 @@ from django.forms import ModelForm, TextInput, Textarea, DateTimeInput
 from django.contrib.auth.models import User
 from .models import Article
 
+
 user = User()
+
+def get_uname(req):
+    return req.user.username
+
 
 class ArticleForm(ModelForm):
     class Meta:
     	model = Article
-    	fields = ['title', 'author', 'text', 'created_date']
+    	fields = ['title', 'text', 'created_date']
 
 
     	widgets = {
@@ -21,7 +26,6 @@ class ArticleForm(ModelForm):
     				'rows': 10
     			}),
     		"created_date": DateTimeInput(attrs={
-    				'class': 'form-control',  
-    				'placeholder': 'Date',  				
+    				'class': 'form-control',  				
     			})
     	}

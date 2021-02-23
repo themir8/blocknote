@@ -7,18 +7,12 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils.text import slugify
 from django.utils import timezone
+from django.http import HttpRequest
 
 
 def rand_slug():
-    return ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(6))
+    return ''.join(str(random.randint(1, 999) * 3) for _ in range(2))
 
-
-class Visitor(db.Model):
-    ip = db.CharField(max_length=100, verbose_name='Ip')
-
-    class Meta:
-        verbose_name = 'Visitors'
-        verbose_name_plural = verbose_name
 
 
 class Profile(db.Model):
@@ -46,7 +40,7 @@ class Article(db.Model):
         User, verbose_name = "Имя ползователя", on_delete=db.SET_NULL, null=True
     )
 
-    created_date = db.DateTimeField("Дата")
+    created_date = db.DateTimeField("Дата", default=timezone.now)
 
 
     def __str__(self):
@@ -55,7 +49,7 @@ class Article(db.Model):
 
     def save(self, *args, **kwargs):
         if not self.url:
-            self.url = slugify(rand_slug() + "-" + self.title)
+            self.url = slugify(self.title + "-" + rand_slug())
         super(Article, self).save(*args, **kwargs)
 
 

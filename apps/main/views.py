@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.base import View
 from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpRequest
 from .models import Article
 from .forms import ArticleForm
 
@@ -11,10 +12,12 @@ def Create(request):
         form = ArticleForm(request.POST)
         # check whether it's valid:
         if form.is_valid():
-            # process the data in form.cleaned_data as required
-            form.save()
+            Article.objects.update_or_create(
+                title=request.POST.get("title"),
+                text=request.POST.get("text"),
+                author=request.user,
+            )
             return redirect('index')
-        # if a GET (or any other method) we'll create a blank form
         else:
             error = 'Form is invalid'
     form = ArticleForm()
