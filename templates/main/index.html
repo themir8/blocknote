@@ -14,10 +14,10 @@
 <div class="container col-md-6 mt-5 pt-5">
         <form method="post">
             {% csrf_token %}
-           	{{ form.title }}
-           	{{ form.author }}
-           	{{ form.text }}
-           	{{ form.created_date }}
+           	{{ form.title }}<br>
+           	{{ form.author }}<br>
+           	{{ form.text }}<br>
+           	{{ form.created_date }}<br>
            	<span>{{error}}</span>
            	<input type="submit" value="Publish" class="btn btn-success mt-3 mb-5">
         </form>
