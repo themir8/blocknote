@@ -3,27 +3,27 @@ from django.views.generic.base import View
 from django.http import HttpResponse, HttpResponseRedirect
 from django.http import HttpRequest
 from .models import Article
-from .forms import ArticleForm
+from .forms import ArticleEditForm
 
 
 def Create(request):
     if request.user.is_authenticated:
         error = ''
         if request.method == 'POST':
-            form = ArticleForm(request.POST)
+            article_form = ArticleEditForm(request.POST)
             # check whether it's valid:
-            if form.is_valid():
+            if article_form.is_valid():
                 Article.objects.update_or_create(
                     title=request.POST.get("title"),
-                    text=request.POST.get("text"),
+                    body=request.POST.get("body"),
                     author=request.user,
                 )
-                return redirect('index')
+                return redirect(Article.get_absolute_url())
             else:
                 error = 'Form is invalid'
-        form = ArticleForm()
+        article_form = ArticleEditForm()
         data = {
-            'form': form,
+            'article_form': article_form,
             'error': error
             }
         

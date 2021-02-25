@@ -1,4 +1,18 @@
 .form-control{
-  border: none;
-  margin-bottom: 3rem;
+	max-width: 800px;
+	border: none;
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+}
+.form-title{
+	font-size: 1.5em;
+	padding: 0px 12px;
+}
+.btn-outline-dark{
+	border-width: 5px;
+	border-radius: 30px;
+	float: right;	
+}
+.hidden {
+    display: none;
 }

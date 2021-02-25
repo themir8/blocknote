@@ -8,6 +8,7 @@ from django.dispatch import receiver
 from django.utils.text import slugify
 from django.utils import timezone
 from django.http import HttpRequest
+from django_editorjs import EditorJsField
 
 
 def rand_slug():
@@ -33,7 +34,17 @@ def save_user_profile(sender, instance, **kwargs):
 
 class Article(db.Model):
     title = db.CharField("Название", max_length=50)
-    text = db.TextField("Описание")
+    body = EditorJsField(
+        editorjs_config={
+            "tools": {
+                "Table": {
+                    "disabled": False,
+                    "inlineToolbar": True,
+                    "config": {"rows": 2, "cols": 3,},
+                }
+            }
+        }
+    )
     url = db.SlugField("Ссылка", max_length=60, unique=True)
     draft = db.BooleanField("Черновик", default=False)
     author = db.ForeignKey(
@@ -51,6 +62,10 @@ class Article(db.Model):
         if not self.url:
             self.url = slugify(self.title + "-" + rand_slug())
         super(Article, self).save(*args, **kwargs)
+
+
+    def get_absolute_url(self):
+        return self.url
 
 
     class Meta:
