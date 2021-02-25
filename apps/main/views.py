@@ -51,6 +51,7 @@ def ArticleViewEdit(request, slug):
         'article_form': article_form,
         'error': error,
         'color': 'success',
-        'form_status': True
+        'form_status': True,
+        'article': instance
     }
     return render(request, 'main/index.html', context)

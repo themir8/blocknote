@@ -4,7 +4,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils import timezone
 from django.http import HttpRequest
-from django_editorjs import EditorJsField
+from ckeditor.fields import RichTextField
 
 
 
@@ -27,17 +27,7 @@ def save_user_profile(sender, instance, **kwargs):
 
 class Article(db.Model):
     title = db.CharField("Название", max_length=50)
-    body = EditorJsField(
-        editorjs_config={
-            "tools": {
-                "Table": {
-                    "disabled": False,
-                    "inlineToolbar": True,
-                    "config": {"rows": 2, "cols": 3,},
-                }
-            }
-        }
-    )
+    body = RichTextField()
     url = db.SlugField("Ссылка", max_length=60, unique=True)
     draft = db.BooleanField("Черновик", default=False)
     author = db.ForeignKey(

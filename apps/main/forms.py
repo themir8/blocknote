@@ -11,7 +11,7 @@ class ArticleEditForm(ModelForm):
     	widgets = {
     		"title": TextInput(attrs={
     				'class': 'form-control form-title',
-    				'placeholder': '| Title',
+    				'placeholder': 'Title',
     			}),
     		"body": Textarea(attrs={
     				'placeholder': 'Your story...',
