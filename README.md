@@ -28,7 +28,7 @@
 
 ```sh
 pip install -r requirements.txt
-python manage.py runserver or make run
+python manage.py runserver
 ```
 
 <!-- MARKDOWN LINKS & IMAGES -->
