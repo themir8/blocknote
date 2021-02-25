@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect
+import time
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.base import View
 from django.http import HttpResponse, HttpResponseRedirect
-from django.http import HttpRequest
+from django.utils.text import slugify
 from .models import Article
 from .forms import ArticleEditForm
 
@@ -17,25 +18,39 @@ def Create(request):
                     title=request.POST.get("title"),
                     body=request.POST.get("body"),
                     author=request.user,
+                    url=slugify(request.POST.get("title") + "-" + str(time.strftime("%m-%d")))
                 )
-                return redirect(Article.get_absolute_url())
+                return HttpResponseRedirect(slugify(request.POST.get("title") + "-" + str(time.strftime("%m-%d"))))
             else:
                 error = 'Form is invalid'
         article_form = ArticleEditForm()
         data = {
             'article_form': article_form,
-            'error': error
+            'error': error,
+            'color': 'dark'
             }
         
         return render(request, 'main/index.html', data)
     else:
         return render(request, 'main/login.html')
 
+# def ArticleView():
+#     pass
 
 def ArticleViewEdit(request, slug):
-
-    data = {
-        'el': Article.objects.get(url=slug)
+    instance = Article.objects.get(url=slug)
+    article_form = ArticleEditForm(request.POST or None, instance=instance)
+    if article_form.is_valid():
+        instance.title=request.POST.get("title")
+        instance.body=request.POST.get("body")
+        instance.save()
+        return redirect('index')
+    else:
+        error = 'Form is invalid'
+    context = {
+        'article_form': article_form,
+        'error': error,
+        'color': 'success',
+        'form_status': True
     }
-
-    return render(request, 'main/index.html', data)
+    return render(request, 'main/index.html', context)

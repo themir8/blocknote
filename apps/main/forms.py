@@ -5,7 +5,7 @@ from .models import Article
 class ArticleEditForm(ModelForm):
     class Meta:
     	model = Article
-    	fields = ['title', 'body', 'created_date']
+    	fields = ['title', 'body']
 
 
     	widgets = {
@@ -16,8 +16,5 @@ class ArticleEditForm(ModelForm):
     		"body": Textarea(attrs={
     				'placeholder': 'Your story...',
     				'rows': 10,
-    			}),
-    		"created_date": DateTimeInput(attrs={
-    				'class': 'form-control',  				
     			})
     	}

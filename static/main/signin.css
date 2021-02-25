@@ -1,6 +1,5 @@
 .form-control{
 	max-width: 800px;
-	border: none;
 	margin-top: 0.5rem;
 	margin-bottom: 0.5rem;
 }
@@ -11,7 +10,21 @@
 .btn-outline-dark{
 	border-width: 5px;
 	border-radius: 30px;
+	margin-top: 1rem;
+	float: right;
+}
+
+.btn-outline-success{
+	border-width: 5px;
+	border-radius: 30px;
+	margin-top: 1rem;
 	float: right;	
+	animation: blinker 1s linear infinite;
+}
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
 }
 .hidden {
     display: none;

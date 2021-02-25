@@ -1,18 +1,11 @@
-import string
-import random
-
 from django.db import models as db
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from django.utils.text import slugify
 from django.utils import timezone
 from django.http import HttpRequest
 from django_editorjs import EditorJsField
 
-
-def rand_slug():
-    return ''.join(str(random.randint(1, 999) * 3) for _ in range(2))
 
 
 
@@ -51,7 +44,7 @@ class Article(db.Model):
         User, verbose_name = "Имя ползователя", on_delete=db.SET_NULL, null=True
     )
 
-    created_date = db.DateTimeField("Дата", default=timezone.now)
+    created_date = db.DateTimeField("Дата")
 
 
     def __str__(self):
@@ -59,13 +52,13 @@ class Article(db.Model):
 
 
     def save(self, *args, **kwargs):
-        if not self.url:
-            self.url = slugify(self.title + "-" + rand_slug())
+        if not self.created_date:
+            self.created_date = timezone.now()
         super(Article, self).save(*args, **kwargs)
 
 
     def get_absolute_url(self):
-        return self.url
+        return f"{self.url}"
 
 
     class Meta:
