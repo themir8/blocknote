@@ -19,13 +19,17 @@
 	border-radius: 30px;
 	margin-top: 1rem;
 	float: right;	
-	animation: blinker 1s linear infinite;
+	/*animation: blinker 1s linear infinite;*/
 }
-@keyframes blinker {
+/*@keyframes blinker {
   50% {
     opacity: 0;
   }
-}
+}*/
 .hidden {
     display: none;
+}
+.input-group {
+    width: auto;
+    float: right;
 }

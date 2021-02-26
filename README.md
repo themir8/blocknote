@@ -31,6 +31,9 @@ pip install -r requirements.txt
 python manage.py runserver
 ```
 
+<a href="./Todo.md">TODO list</a>
+
+
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [forks-shield]: https://img.shields.io/github/forks/mirsaid-mirzohidov/blocknote?style=for-the-badge

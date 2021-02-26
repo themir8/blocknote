@@ -14,6 +14,7 @@ class ArticleEditForm(ModelForm):
     				'placeholder': 'Title',
     			}),
     		"body": Textarea(attrs={
+                    'class': 'form-control',
     				'placeholder': 'Your story...',
     				'rows': 10,
     			})

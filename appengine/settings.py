@@ -30,7 +30,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'main',
-    'django_editorjs',
     'ckeditor',
 ]
 
@@ -124,13 +123,15 @@ CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'Custom',
         'toolbar_Custom': [
-            ['Bold', 'Italic', 'Underline'],
+            ['Smiley', 'Bold', 'Italic', 'Underline', 'Styles'],
             ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
             ['Link', 'Unlink'],
-            ['RemoveFormat', 'Source']
+            ['RemoveFormat']
         ],
         'height': 300,
         'width': 800,
-        "inlineToolbar": True,
+        # 'toolbarCanCollapse': True,
+        # 'toolbarStartupExpanded': False,
+        # 'toolbarLocation': 'bottom',
     }
 }
