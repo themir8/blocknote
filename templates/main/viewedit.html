@@ -14,6 +14,7 @@
 </head>
 <body>
 
+{% if request.user == article.author or request.user.is_superuser %}
 <h1 align="center" style="font-family: 'Akaya Telivigala', cursive; font-size: 80px;">BlockNote</h1>
 <div class="container col-md-8">
        <form method="post" autocomplete="off">
@@ -33,6 +34,20 @@
         {% endif %}
         </form>
 </div>
+    
+{% else %}
+<div class="container col-md-7 mt-5">
+    <h1>{{article.title}}</h1>
+    <p class="text-muted">
+      {{article.author}} 
+      &bull; 
+      <time datetime="{{ article.created_date}}">
+        {{ article.created_date|date:"j-F, Y" }}
+      </time> 
+    </p>
+    <h4>{{article.body|safe}}</h4>
+</div>
+{% endif %}
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 <script type="text/javascript">

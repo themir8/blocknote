@@ -2,9 +2,10 @@ import time
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.base import View
 from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth import authenticate, login, logout
 from django.utils.text import slugify
 from .models import Article
-from .forms import ArticleEditForm
+from .forms import ArticleEditForm, UserCreationForm
 
 
 def Create(request):
@@ -32,10 +33,42 @@ def Create(request):
         
         return render(request, 'main/index.html', data)
     else:
-        return render(request, 'main/login.html')
+        return redirect('/login/')
 
-# def ArticleView():
-#     pass
+def Registration(request):
+    if(not request.user.is_authenticated):
+        if request.method == 'POST':
+            form = UserCreationForm(request.POST)
+            if form.is_valid():
+                new_user = form.save()
+                return HttpResponseRedirect("/")
+        else:
+            form = UserCreationForm()
+        return render(request, "main/registration.html", {
+            'form': form,
+            })
+    else:
+       return HttpResponseRedirect("/")
+
+def LoginView(request):
+    if(not request.user.is_authenticated):
+        if request.method == "POST":
+            username = request.POST.get('username', '')
+            password = request.POST.get('password', '')
+            
+            user = authenticate(
+                username=username,
+                password=password
+                )
+            if user is not None and user.is_active:
+                login(request, user)
+                return HttpResponseRedirect("/")
+            else:
+                return HttpResponseRedirect("/account/invalid/")
+    else:
+           return HttpResponseRedirect("/") 
+    
+    return render(request, 'main/login.html')
 
 def ArticleViewEdit(request, slug):
     instance = Article.objects.get(url=slug)
@@ -44,7 +77,7 @@ def ArticleViewEdit(request, slug):
         instance.title=request.POST.get("title")
         instance.body=request.POST.get("body")
         instance.save()
-        return redirect('index')
+        return redirect('article', slug=slug)
     else:
         error = 'Form is invalid'
     context = {
@@ -54,4 +87,4 @@ def ArticleViewEdit(request, slug):
         'form_status': True,
         'article': instance
     }
-    return render(request, 'main/index.html', context)
+    return render(request, 'main/viewedit.html', context)
