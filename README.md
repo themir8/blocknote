@@ -8,7 +8,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/mirsaid-mirzohidov/blocknote/">
-    <img src="./blocknote.jpg" alt="Header">
+    <img src="./blocknote.jpg" alt="Header" style="width: 100%;">
   </a>
 
   <h1 align="center">BlockNote</h1>
