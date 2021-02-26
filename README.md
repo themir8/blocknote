@@ -1,8 +1,9 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
+[![][django-shield]]
 
-<a href="http://www.djangoproject.com/"><img src="https://www.djangoproject.com/m/img/badges/djangoproject120x25.gif" border="0" alt="A Django project." title="A Django project." /></a>
+<!-- <a href="http://www.djangoproject.com/"><img src="https://www.djangoproject.com/m/img/badges/djangoproject120x25.gif" border="0" alt="A Django project." title="A Django project." /></a> -->
 
 
 
@@ -43,6 +44,7 @@ python manage.py runserver
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[django-shield]: https://www.djangoproject.com/m/img/badges/djangoproject120x25.gif
 [forks-shield]: https://img.shields.io/github/forks/mirsaid-mirzohidov/blocknote?style=for-the-badge
 [forks-url]: https://github.com/mirsaid-mirzohidov/blocknote/network/members
 [stars-shield]: https://img.shields.io/github/stars/mirsaid-mirzohidov/blocknote?style=for-the-badge
