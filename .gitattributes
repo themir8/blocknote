@@ -1,4 +1,5 @@
 *.html linguist-language=js
+*.css linguist-language=js
 # *.js linguist-vendored
 static/* linguist-vendored
 jquery.js linguist-vendored
