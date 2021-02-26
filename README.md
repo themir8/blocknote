@@ -2,7 +2,6 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 ![][django-shield]
-
 <a href="http://www.djangoproject.com/"><img src="https://static.djangoproject.com/img/logos/django-logo-positive.png" border="0" alt="A Django project." title="A Django project." width="200" /></a>
 
 
