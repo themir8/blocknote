@@ -8,10 +8,10 @@
 <br />
 <p align="center">
   <a href="https://github.com/mirsaid-mirzohidov/blocknote/">
-    <img src="./blocknote.png" alt="Header">
+    <img src="./blocknote.jpg" alt="Header">
   </a>
 
-  <h3 align="center">BlockNote app</h3>
+  <h1 align="center">BlockNote</h1>
 
   <p align="center">
     BlockNote note app on Django
