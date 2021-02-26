@@ -3,7 +3,7 @@
 [![Issues][issues-shield]][issues-url]
 ![][django-shield]
 
-<!-- <a href="http://www.djangoproject.com/"><img src="https://www.djangoproject.com/m/img/badges/djangoproject120x25.gif" border="0" alt="A Django project." title="A Django project." /></a> -->
+<a href="http://www.djangoproject.com/"><img src="https://static.djangoproject.com/img/logos/django-logo-positive.png" border="0" alt="A Django project." title="A Django project." width="200" /></a>
 
 
 
