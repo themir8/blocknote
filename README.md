@@ -31,7 +31,11 @@ pip install -r requirements.txt
 python manage.py runserver
 ```
 
-<a href="./Todo.md">TODO list</a>
+### Todo
+
+- [ ] Ckeditor to Editorjs
+
+- [ ] Signup and Signin page
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
