@@ -8,7 +8,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/mirsaid-mirzohidov/blocknote/">
-    <img src="./logo.ico" alt="Logo" width="80" height="80">
+    <img src="./blocknote.png" alt="Header">
   </a>
 
   <h3 align="center">BlockNote app</h3>
@@ -16,7 +16,6 @@
   <p align="center">
     BlockNote note app on Django
     <br />
-    <!-- <a href="https://mirsaiduz.pythonanywhere.com/">View Demo</a> -->
     <a href="https://github.com/mirsaid-mirzohidov/blocknote/issues">Report Bug</a>
     ·
     <a href="https://github.com/mirsaid-mirzohidov/blocknote/issues">Request Feature</a>
