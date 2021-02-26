@@ -36,6 +36,8 @@ python manage.py runserver
 
 - [ ] Signup and Signin page
 
+- [x] Copy to clipboard button
+
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->

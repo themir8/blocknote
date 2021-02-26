@@ -22,7 +22,13 @@
             {{ article_form.title }}
             {{ article_form.body }}
            	<span>{{error}}</span>
-            <input type="submit" value="Publish" align="center" class="btn btn-outline-{{color}}">
+            <input type="submit" value="Publish" align="center" class="btn btn-outline-dark">
+        {% if article.title|length > 0 %}
+          <div class="width-50">
+            <input id="input" type="text" value="{{request.build_absolute_uri}}" class="hidden" />
+            <span id="clipboardCopy" class="btn btn-outline-{{color}}"> Copy link </span>
+          </div>  
+        {% endif %}
         </form>
 </div>
     
@@ -41,9 +47,13 @@
 {% endif %}
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
 <script type="text/javascript">
-  new ClipboardJS('.button');
+  document.getElementById('clipboardCopy').addEventListener('click', clipboardCopy);
+  async function clipboardCopy() {
+    let text = document.querySelector("#input").value;
+    alert('Link copied!')
+    await navigator.clipboard.writeText(text);
+  }
 </script>
 </body>
 </html>
