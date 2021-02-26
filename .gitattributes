@@ -1,3 +1,4 @@
-*.js linguist-language=Python
+# *.js linguist-language=Python
+*.js linguist-vendored
 static/* linguist-vendored
-jquery.js linguist-vendored=false
+jquery.js linguist-vendored
