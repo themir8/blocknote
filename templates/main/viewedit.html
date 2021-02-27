@@ -18,7 +18,7 @@
   <img src="https://media.giphy.com/media/Jmsr7KdgwnzjMUkva8/giphy.gif" height="100" class="click-here">
 </a>
 {% if request.user == article.author or request.user.is_superuser %}
-<h1 class="heading"></h1>
+<h1 class="heading">BlockNote</h1>
 <div class="container col-md-8">
        <form method="post" autocomplete="off">
             {% csrf_token %}
