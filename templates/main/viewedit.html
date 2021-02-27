@@ -13,9 +13,12 @@
   {{ article_form.media }}
 </head>
 <body>
-
+<a href="https://github.com/mirsaid-mirzohidov/blocknote/" target="_blank">
+  <img alt="GitHub Repository." src='{% static "main/GitHub-logo.png" %}' height="30" class="github-logo">
+  <img src="https://media.giphy.com/media/Jmsr7KdgwnzjMUkva8/giphy.gif" height="100" class="click-here">
+</a>
 {% if request.user == article.author or request.user.is_superuser %}
-<h1 align="center" style="font-family: 'Akaya Telivigala', cursive; font-size: 80px;">BlockNote</h1>
+<h1 class="heading"></h1>
 <div class="container col-md-8">
        <form method="post" autocomplete="off">
             {% csrf_token %}

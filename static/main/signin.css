@@ -1,3 +1,10 @@
+.heading{
+	font-family: 'Akaya Telivigala', cursive; 
+	font-size: 80px;
+	text-align: center;
+	width: 50%;
+	margin-left: 22%;
+}
 .form-control{
 	max-width: 800px;
 	margin-top: 0.5rem;
@@ -32,4 +39,11 @@
 .width-50 {
     width: auto;
     float: right;
+}
+.github-logo{
+	float: right;
+}
+.click-here{
+	margin-top: 1.5rem;
+	float: right;
 }
