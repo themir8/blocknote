@@ -15,9 +15,9 @@ SECRET_KEY = '(f1^5-b-a6f4p=onnsu2-u#(nf+ye0ulj#jw(n-sg0c4=2ba=_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['blocknoteapp.herokuapp.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
-INTERNAL_IPS = ['blocknoteapp.herokuapp.com', '127.0.0.1']
+INTERNAL_IPS = ['127.0.0.1']
 
 # Application definition
 
