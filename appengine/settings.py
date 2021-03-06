@@ -15,7 +15,7 @@ SECRET_KEY = '(f1^5-b-a6f4p=onnsu2-u#(nf+ye0ulj#jw(n-sg0c4=2ba=_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['blocknoteapp.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['blocknoteapp.herokuapp.com', '127.0.0.1', 'localhost']
 
 INTERNAL_IPS = ['blocknoteapp.herokuapp.com', '127.0.0.1']
 
@@ -31,6 +31,7 @@ INSTALLED_APPS = [
 
     'main',
     'ckeditor',
+    'simple_history',
 ]
 
 MIDDLEWARE = [
@@ -42,6 +43,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'simple_history.middleware.HistoryRequestMiddleware',
 ]
 
 ROOT_URLCONF = 'appengine.urls'
@@ -69,9 +71,13 @@ WSGI_APPLICATION = 'appengine.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": os.getenv("DJANGO_DB_ENGINE", 'django.db.backends.sqlite3'),
+        "NAME": os.getenv("DJANGO_DB_DATABASE", os.path.join(BASE_DIR, 'db.sqlite3')),
+        "USER": os.getenv("DJANGO_DB_USER"),
+        "PASSWORD": os.getenv("DJANGO_DB_PASSWORD"),
+        "HOST": os.getenv("DJANGO_DB_HOST"),
+        "PORT": os.getenv("DJANGO_DB_PORT"),
     }
 }
 
