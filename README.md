@@ -35,7 +35,7 @@ python manage.py runserver
 
 - [ ] Ckeditor to Editorjs
 
-- [ ] Signup and Signin page
+- [x] Signup and Signin page
 
 - [x] Copy to clipboard button
 
