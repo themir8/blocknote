@@ -1,5 +1,5 @@
-*.css linguist-language=js
-*.html linguist-language=Python
+*.css linguist-language=Python
+*.html linguist-language=js
 # *.js linguist-vendored
 static/* linguist-vendored
 jquery.js linguist-vendored
