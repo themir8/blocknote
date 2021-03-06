@@ -2,6 +2,11 @@ from django.db import models as db
 from django.contrib.auth.models import User
 from django.utils import timezone
 from ckeditor.fields import RichTextField
+from simple_history.models import HistoricalRecords
+from simple_history import register
+
+
+register(User)
 
 
 class Article(db.Model):
@@ -14,6 +19,7 @@ class Article(db.Model):
     )
 
     created_date = db.DateTimeField("Дата")
+    history = HistoricalRecords()
 
 
     def __str__(self):
@@ -24,6 +30,7 @@ class Article(db.Model):
         if not self.created_date:
             self.created_date = timezone.now()
         super(Article, self).save(*args, **kwargs)
+        
 
 
     def get_absolute_url(self):

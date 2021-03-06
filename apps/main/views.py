@@ -8,6 +8,22 @@ from .models import Article
 from .forms import ArticleEditForm, UserCreationForm
 
 
+# def get_client_ip(request):
+#     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+#     if x_forwarded_for:
+#         ip = x_forwarded_for.split(',')[0]
+#     else:
+#         ip = request.META.get('REMOTE_ADDR')
+#     return Visitor(ip=ip, user=request.user).save()
+
+def ListView(request):
+    get_all_posts = Article.objects.filter(author=request.user).values().order_by("-created_date")
+    # print(get_all_posts.title)
+    data = {
+        'article': get_all_posts
+    }
+    return render(request, 'main/blog.html', data)
+
 def Create(request):
     if request.user.is_authenticated:
         error = ''
