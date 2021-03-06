@@ -9,16 +9,22 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap" rel="stylesheet">
 
-	<link href='{% static "main/signin.css" %}' rel="stylesheet">
+	<link href='{% static "main/style.css" %}' rel="stylesheet">
   {{ article_form.media }}
 </head>
 <body>
+{% if request.user == article.author %}
 <a href="https://github.com/mirsaid-mirzohidov/blocknote/" target="_blank">
-  <img alt="GitHub Repository." src='{% static "main/GitHub-logo.png" %}' height="30" class="github-logo">
+  <img alt="GitHub Repository." src='{% static "main/GitHub-logo.png" %}' height="20" class="github-logo">
   <img src="https://media.giphy.com/media/Jmsr7KdgwnzjMUkva8/giphy.gif" height="100" class="click-here">
 </a>
+{% elif request.user.is_authenticated %}
+<a href="/" class="width-50">Home Page</a>
+{% else %}
+<a href="/login/" class="width-50">Log in</a>
+{% endif %}
 {% if request.user == article.author or request.user.is_superuser %}
-<h1 class="heading">BlockNote</h1>
+<h1 class="heading">BlockNote <a href="/all/" class="text-small">My posts</a></h1>
 <div class="container col-md-8">
        <form method="post" autocomplete="off">
             {% csrf_token %}
