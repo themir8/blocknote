@@ -17,7 +17,7 @@ from .forms import ArticleEditForm, UserCreationForm
 #     return Visitor(ip=ip, user=request.user).save()
 
 def ListView(request):
-    get_all_posts = Article.objects.filter(author=request.user).values().order_by("-created_date")
+    get_all_posts = Article.objects.filter(author=request.user).all().order_by("-created_date")
     # print(get_all_posts.title)
     data = {
         'article': get_all_posts

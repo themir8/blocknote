@@ -17,7 +17,7 @@
   <img alt="GitHub Repository." src='{% static "main/GitHub-logo.png" %}' height="30" class="github-logo">
   <img src="https://media.giphy.com/media/Jmsr7KdgwnzjMUkva8/giphy.gif" height="100" class="click-here">
 </a>
-<h1 class="heading">BlockNote {% if request.user.is_authenticated %}<a href="/all/" class="text-small">My posts</a>{% endif %}</h1>
+<h1 class="heading">BlockNote <a href="/all/" class="text-small">My posts</a></h1>
 <div class="container col-md-8">
        <form method="post" autocomplete="off">
             {% csrf_token %}
