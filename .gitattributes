@@ -1,4 +1,4 @@
-*.html linguist-language=js
+*.html linguist-language=Python
 *.css linguist-language=js
 # *.js linguist-vendored
 static/* linguist-vendored
