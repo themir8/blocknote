@@ -20,7 +20,7 @@ jobs:
           # Options
           user: mirsaid-mirzohidov
           query: '{"repo":"blocknote"}'
-          template: classic
+          template: repository
           base: ""
           config_timezone: Asia/Tashkent
           plugin_activity: yes
