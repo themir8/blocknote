@@ -26,7 +26,7 @@
 </p>
 
 
-## Current features
+### Current features
 
 - Login and Registration
 
