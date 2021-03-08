@@ -1,0 +1,40 @@
+# Visit https://github.com/lowlighter/metrics/blob/master/action.yml for full reference
+name: Metrics
+on:
+  # Schedule updates (each hour)
+  schedule: [{cron: "0 * * * *"}]
+  # Lines below let you run workflow manually and on each commit
+  push: {branches: ["master", "main"]}
+  workflow_dispatch:
+jobs:
+  github-metrics:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: lowlighter/metrics@latest
+        with:
+          # Your GitHub token
+          token: ${{ secrets.GH_TOKEN }}
+          # GITHUB_TOKEN is a special auto-generated token restricted to current repository, which is used to push files in it
+          committer_token: ${{ secrets.GH_TOKEN }}
+
+          # Options
+          user: mirsaid-mirzohidov
+          query: '{"repo":"blocknote"}'
+          template: classic
+          base: header, activity, community, repositories, metadata
+          config_timezone: Asia/Tashkent
+          plugin_activity: yes
+          plugin_activity_days: 14
+          plugin_activity_filter: all
+          plugin_activity_limit: 5
+          plugin_activity_visibility: all
+          plugin_isocalendar: yes
+          plugin_isocalendar_duration: half-year
+          plugin_people: yes
+          plugin_people_limit: 28
+          plugin_people_size: 28
+          plugin_people_types: followers, following
+          plugin_projects: yes
+          plugin_projects_limit: 4
+          plugin_stars: yes
+          plugin_stars_limit: 4
