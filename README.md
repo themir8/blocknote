@@ -26,28 +26,6 @@
 </p>
 
 
-### Development requires
-
-* [Python 3.8.0](https://www.python.org/downloads/release/python-380/)
-* [Django 3](https://www.djangoproject.com/) 
-* [Ckeditor](https://pypi.org/project/django-ckeditor/)  
-
-
-### Installation
-```bash
-# make sure that the virtual environment with python 3.8 is activated
-
-git clone https://gitlab.com/mirsaid-mirzohidov/blocknote.git # copy the project locally
-pip install -r requirements.txt  # installing python dependencies
-python manage.py migrate # database migration (preparation) 
-
-```
-
-### Launch
-```bash
-python manage.py runserver
-```
-
 ## Current features
 
 - Login and Registration
@@ -64,6 +42,29 @@ python manage.py runserver
 - [ ] Rendering secure tokens for admin panel url
 
 - [ ] Google forms clone for blocknote
+
+
+### Development requires
+
+* [Python 3.8.0](https://www.python.org/downloads/release/python-380/)
+* [Django 3](https://www.djangoproject.com/) 
+* [Ckeditor](https://pypi.org/project/django-ckeditor/)  
+
+
+### Installation
+```sh
+# make sure that the virtual environment with python 3.8 is activated
+
+git clone https://gitlab.com/mirsaid-mirzohidov/blocknote.git # copy the project locally
+pip install -r requirements.txt  # installing python dependencies
+python manage.py migrate # database migration (preparation) 
+
+```
+
+### Launch
+```sh
+python manage.py runserver
+```
 
 
 # Screenshots
