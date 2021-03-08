@@ -40,13 +40,29 @@ python manage.py runserver
 - The article can only be changed by the author
 
 
-###    Todo
+### Todo
 
 - [ ] Ckeditor to Editorjs
 
 - [ ] Rendering secure tokens for admin panel url
 
 - [ ] Google forms clone for blocknote
+
+
+# Screenshots
+
+### Main page
+
+<img src="./readme/img/screen1.png" alt="Main page">
+
+### Artcile list page
+
+<img src="./readme/img/screen2.png" alt="Article list">
+
+### Edit page
+
+<img src="./readme/img/screen3.png" alt="Edit page">
+
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
