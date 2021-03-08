@@ -5,7 +5,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.utils.text import slugify
 from .models import Article
-from .forms import ArticleEditForm, UserCreationForm
+from .forms import ArticleEditForm, UserRegistrationForm
 
 
 # def get_client_ip(request):
@@ -18,7 +18,6 @@ from .forms import ArticleEditForm, UserCreationForm
 
 def ListView(request):
     get_all_posts = Article.objects.filter(author=request.user).all().order_by("-created_date")
-    # print(get_all_posts.title)
     data = {
         'article': get_all_posts
     }
@@ -54,12 +53,13 @@ def Create(request):
 def Registration(request):
     if(not request.user.is_authenticated):
         if request.method == 'POST':
-            form = UserCreationForm(request.POST)
+            form = UserRegistrationForm(request.POST)
             if form.is_valid():
                 new_user = form.save()
+                
                 return HttpResponseRedirect("/")
         else:
-            form = UserCreationForm()
+            form = UserRegistrationForm()
         return render(request, "main/registration.html", {
             'form': form,
             })
