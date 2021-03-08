@@ -67,7 +67,7 @@ python manage.py runserver
 ```
 
 
-![Metrics](https://github.com/mirsaid-mirzohidov/blocknote/blob/master/github-metrics.svg)
+<img src="https://github.com/mirsaid-mirzohidov/blocknote/blob/master/github-metrics.svg" alt="Main page">
 
 
 # Screenshots
