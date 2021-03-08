@@ -31,13 +31,22 @@ pip install -r requirements.txt
 python manage.py runserver
 ```
 
+## Current features
+
+- Login and Registration
+
+- Ckeditor for editing texts
+
+- The article can only be changed by the author
+
+
 ### Todo
 
 - [ ] Ckeditor to Editorjs
 
-- [x] Signup and Signin page
+- [ ] Rendering secure tokens for admin panel url
 
-- [x] Copy to clipboard button
+- [ ] Google forms clone for blocknote
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
