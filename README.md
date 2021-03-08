@@ -28,20 +28,20 @@
 
 ### Current features
 
-- Login and Registration
+* Login and Registration
 
-- Ckeditor for editing texts
+* Ckeditor for editing texts
 
-- The article can only be changed by the author
+* The article can only be changed by the author
 
 
 ### Todo
 
-- [ ] Ckeditor to Editorjs
+* [ ] Ckeditor to Editorjs
 
-- [ ] Rendering secure tokens for admin panel url
+* [ ] Rendering secure tokens for admin panel url
 
-- [ ] Google forms clone for blocknote
+* [ ] Google forms clone for blocknote
 
 
 ### Development requires
