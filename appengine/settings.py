@@ -31,7 +31,6 @@ INSTALLED_APPS = [
 
     'main',
     'ckeditor',
-    'whitenoise',
     'simple_history',
 ]
 
