@@ -3,10 +3,6 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from ckeditor.fields import RichTextField
 from simple_history.models import HistoricalRecords
-from simple_history import register
-
-
-register(User)
 
 
 class Article(db.Model):
@@ -40,3 +36,9 @@ class Article(db.Model):
     class Meta:
         verbose_name = "Пост"
         verbose_name_plural = "Посты"
+
+
+# Register a User model for simple_history
+from simple_history import register
+register(User)
+#

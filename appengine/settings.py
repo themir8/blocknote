@@ -2,10 +2,6 @@ from pathlib import Path
 import os
 import sys
 
-# .env file reader
-from dotenv import load_dotenv
-load_dotenv()
-#
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -147,3 +143,9 @@ CKEDITOR_CONFIGS = {
         # 'toolbarLocation': 'bottom',
     }
 }
+
+
+# .env file reader
+from dotenv import load_dotenv
+load_dotenv()
+#
