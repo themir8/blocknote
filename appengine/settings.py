@@ -15,16 +15,22 @@ sys.path.append(os.path.join(BASE_DIR, "apps"))
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '(f1^5-b-a6f4p=onnsu2-u#(nf+ye0ulj#jw(n-sg0c4=2ba=_'
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", '(f1^5-b-a6f4p=onnsu2-u#(nf+ye0ulj#jw(n-sg0c4=2ba=_')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(os.getenv("DJANGO_DEBUG", True))
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", '*').split(" ")
 
-INTERNAL_IPS = ['127.0.0.1']
+# INTERNAL_IPS = os.getenv("DJANGO_INTERNAL_IPS", '*').split(" ")
 
 # Application definition
+
+LOCAL_APPS = [
+    'main',
+    'ckeditor',
+    'simple_history',
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -33,11 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'main',
-    'ckeditor',
-    'simple_history',
-]
+]+LOCAL_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
