@@ -13,7 +13,6 @@ class Article(db.Model):
     author = db.ForeignKey(
         User, verbose_name = "Имя ползователя", on_delete=db.SET_NULL, null=True
     )
-
     created_date = db.DateTimeField("Дата")
     history = HistoricalRecords()
 
