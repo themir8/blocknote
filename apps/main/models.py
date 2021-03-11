@@ -2,12 +2,14 @@ from django.db import models as db
 from django.contrib.auth.models import User
 from django.utils import timezone
 from ckeditor.fields import RichTextField
+from django_editorjs_fields import EditorJsTextField, EditorJsJSONField
 from simple_history.models import HistoricalRecords
 
 
 class Article(db.Model):
     title = db.CharField("Название", max_length=50)
-    body = RichTextField()
+    body = EditorJsJSONField()  # Django >= 3.1
+    # body_text = EditorJsTextField()  # Django <= 3.0
     url = db.SlugField("Ссылка", max_length=60, unique=True)
     draft = db.BooleanField("Черновик", default=False)
     author = db.ForeignKey(

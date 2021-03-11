@@ -26,6 +26,7 @@ LOCAL_APPS = [
     'main',
     'ckeditor',
     'simple_history',
+    'django_editorjs_fields',
 ]
 
 INSTALLED_APPS = [

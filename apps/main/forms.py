@@ -2,6 +2,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import password_validation
 from django import forms
+from django_editorjs_fields.widgets import EditorJsWidget
 from .models import Article
 
 
@@ -54,9 +55,5 @@ class ArticleEditForm(forms.ModelForm):
     				'class': 'form-control form-title',
     				'placeholder': 'Title',
     			}),
-    		"body": forms.Textarea(attrs={
-                    'class': 'form-control',
-    				'placeholder': 'Your story...',
-    				'rows': 10,
-    			})
+    		"body": EditorJsWidget()
     	}

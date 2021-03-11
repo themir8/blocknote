@@ -35,20 +35,14 @@
 * The article can only be changed by the author
 
 
-### Todo
-
-* [ ] Ckeditor to Editorjs
-
-* [ ] Rendering secure tokens for admin panel url
-
-* [ ] Google forms clone for blocknote
+### Todo [Python 3.8.0](https://www.python.org/downloads/release/python-380/)
 
 
 ### Development requires
 
 * [Python 3.8.0](https://www.python.org/downloads/release/python-380/)
 * [Django 3](https://www.djangoproject.com/) 
-* [Ckeditor](https://pypi.org/project/django-ckeditor/)  
+* [Editor.js](https://pypi.org/project/django-editorjs-fields/)  
 
 
 ### Installation
@@ -65,9 +59,6 @@ python manage.py migrate # database migration (preparation)
 ```sh
 python manage.py runserver
 ```
-
-
-<img src="https://github.com/mirsaid-mirzohidov/blocknote/blob/master/github-metrics.svg" alt="Main page">
 
 
 # Screenshots
