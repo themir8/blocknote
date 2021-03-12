@@ -35,7 +35,8 @@
 * The article can only be changed by the author
 
 
-### Todo [Python 3.8.0](https://www.python.org/downloads/release/python-380/)
+### Todo [BlockNote Project](https://github.com/mirsaid-mirzohidov/blocknote/projects/1)
+* [ ] Translate views functions at main app into classes
 
 
 ### Development requires
