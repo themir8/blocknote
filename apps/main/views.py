@@ -1,23 +1,18 @@
 import time
-from django.shortcuts import render, redirect, get_object_or_404
+
+from django.shortcuts import render, redirect
 from django.views.generic.base import View
-from django.http import HttpResponse, HttpResponseRedirect
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.views import LoginView
-from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView
-from django.utils.text import slugify
+from django.http import HttpResponseRedirect
+from django.views.generic.edit import FormView
+
 from django.urls import reverse_lazy
+from django.utils.text import slugify
+from django.contrib.auth.views import LoginView
+from django.contrib.auth import authenticate, login, logout
+
 from .models import Article
 from .forms import ArticleEditForm, UserCreationForm
 
-
-# def get_client_ip(request):
-#     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-#     if x_forwarded_for:
-#         ip = x_forwarded_for.split(',')[0]
-#     else:
-#         ip = request.META.get('REMOTE_ADDR')
-#     return Visitor(ip=ip, user=request.user).save()
 
 def ListView(request):
     get_all_posts = Article.objects.filter(author=request.user).all().order_by("-created_date")
@@ -53,41 +48,6 @@ def Create(request):
     else:
         return redirect('login')
 
-# def Registration(request):
-#     if(not request.user.is_authenticated):
-#         if request.method == 'POST':
-#             form = UserRegistrationForm(request.POST)
-#             if form.is_valid():
-#                 new_user = form.save()
-                
-#                 return HttpResponseRedirect("/")
-#         else:
-#             form = UserRegistrationForm()
-#         return render(request, "main/registration.html", {
-#             'form': form,
-#             })
-#     else:
-#        return HttpResponseRedirect("/")
-
-# def LoginView(request):
-#     if(not request.user.is_authenticated):
-#         if request.method == "POST":
-#             username = request.POST.get('username', '')
-#             password = request.POST.get('password', '')
-            
-#             user = authenticate(
-#                 username=username,
-#                 password=password
-#                 )
-#             if user is not None and user.is_active:
-#                 login(request, user)
-#                 return HttpResponseRedirect("/")
-#             else:
-#                 return HttpResponseRedirect("/account/invalid/")
-#     else:
-#            return HttpResponseRedirect("/") 
-    
-#     return render(request, 'main/login.html')
 
 class CustomLoginView(LoginView):
     template_name = 'main/login.html'
