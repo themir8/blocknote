@@ -3,6 +3,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 Makefile
+Procfile
+runtime.txt
 # C extensions
 *.so
 *.sh
