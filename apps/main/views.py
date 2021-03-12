@@ -3,9 +3,12 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.base import View
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.views import LoginView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView
 from django.utils.text import slugify
+from django.urls import reverse_lazy
 from .models import Article
-from .forms import ArticleEditForm, UserRegistrationForm
+from .forms import ArticleEditForm, UserCreationForm
 
 
 # def get_client_ip(request):
@@ -48,43 +51,69 @@ def Create(request):
         
         return render(request, 'main/index.html', data)
     else:
-        return redirect('/login/')
+        return redirect('login')
 
-def Registration(request):
-    if(not request.user.is_authenticated):
-        if request.method == 'POST':
-            form = UserRegistrationForm(request.POST)
-            if form.is_valid():
-                new_user = form.save()
+# def Registration(request):
+#     if(not request.user.is_authenticated):
+#         if request.method == 'POST':
+#             form = UserRegistrationForm(request.POST)
+#             if form.is_valid():
+#                 new_user = form.save()
                 
-                return HttpResponseRedirect("/")
-        else:
-            form = UserRegistrationForm()
-        return render(request, "main/registration.html", {
-            'form': form,
-            })
-    else:
-       return HttpResponseRedirect("/")
+#                 return HttpResponseRedirect("/")
+#         else:
+#             form = UserRegistrationForm()
+#         return render(request, "main/registration.html", {
+#             'form': form,
+#             })
+#     else:
+#        return HttpResponseRedirect("/")
 
-def LoginView(request):
-    if(not request.user.is_authenticated):
-        if request.method == "POST":
-            username = request.POST.get('username', '')
-            password = request.POST.get('password', '')
+# def LoginView(request):
+#     if(not request.user.is_authenticated):
+#         if request.method == "POST":
+#             username = request.POST.get('username', '')
+#             password = request.POST.get('password', '')
             
-            user = authenticate(
-                username=username,
-                password=password
-                )
-            if user is not None and user.is_active:
-                login(request, user)
-                return HttpResponseRedirect("/")
-            else:
-                return HttpResponseRedirect("/account/invalid/")
-    else:
-           return HttpResponseRedirect("/") 
+#             user = authenticate(
+#                 username=username,
+#                 password=password
+#                 )
+#             if user is not None and user.is_active:
+#                 login(request, user)
+#                 return HttpResponseRedirect("/")
+#             else:
+#                 return HttpResponseRedirect("/account/invalid/")
+#     else:
+#            return HttpResponseRedirect("/") 
     
-    return render(request, 'main/login.html')
+#     return render(request, 'main/login.html')
+
+class CustomLoginView(LoginView):
+    template_name = 'main/login.html'
+    fields = '__all__'
+    redirect_authenticated_user = True
+
+    def get_success_url(self):
+        return reverse_lazy('index')
+
+
+class RegisterPage(FormView):
+    template_name = 'main/register.html'
+    form_class = UserCreationForm
+    redirect_authenticated_user = True
+    success_url = reverse_lazy('index')
+
+    def form_valid(self, form):
+        user = form.save()
+        if user is not None:
+            login(self.request, user)
+        return super(RegisterPage, self).form_valid(form)
+
+    def get(self, *args, **kwargs):
+        if self.request.user.is_authenticated:
+            return redirect('index')
+        return super(RegisterPage, self).get(*args, **kwargs)
 
 def ArticleViewEdit(request, slug):
     instance = Article.objects.get(url=slug)

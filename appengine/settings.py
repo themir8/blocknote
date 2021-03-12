@@ -3,6 +3,11 @@ import os
 import sys
 
 
+# .env file reader
+from dotenv import load_dotenv
+load_dotenv()
+#
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 sys.path.append(os.path.join(BASE_DIR, "apps"))
@@ -24,6 +29,7 @@ ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", '*').split(" ")
 
 LOCAL_APPS = [
     'main',
+    'todoapp',
     'ckeditor',
     'simple_history',
     'django_editorjs_fields',
@@ -144,9 +150,3 @@ CKEDITOR_CONFIGS = {
         # 'toolbarLocation': 'bottom',
     }
 }
-
-
-# .env file reader
-from dotenv import load_dotenv
-load_dotenv()
-#
