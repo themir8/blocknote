@@ -9,7 +9,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/mirsaid-mirzohidov/blocknote/">
-    <img src="./blocknote.jpg" alt="Header">
+    <img src="./readme/img/blocknote.jpg" alt="Header">
   </a>
 
   <h1 align="center">BlockNote</h1>
@@ -33,6 +33,8 @@
 * Ckeditor for editing texts
 
 * The article can only be changed by the author
+
+* Todo app
 
 
 ### Todo [BlockNote Project](https://github.com/mirsaid-mirzohidov/blocknote/projects/1)
