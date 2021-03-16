@@ -30,15 +30,14 @@
 
 * Login and Registration
 
-* Ckeditor for editing texts
+* tinyMCE for editing texts
 
 * The article can only be changed by the author
 
 * Todo app
 
 
-### Todo [BlockNote Project](https://github.com/mirsaid-mirzohidov/blocknote/projects/1)
-* [ ] Translate views functions at main app into classes
+### [Todo](https://github.com/mirsaid-mirzohidov/blocknote/projects/1)
 
 
 ### Development requires
