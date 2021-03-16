@@ -40,6 +40,7 @@
 .width-50 {
     width: auto;
     float: right;
+    margin-right: 5rem;
 }
 .github-logo{
 	float: right;
