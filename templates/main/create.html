@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap" rel="stylesheet">
 
 	<link href='{% static "main/style.css" %}' rel="stylesheet">
-  {{ article_form.media }}
+  {{ form.media }}
 </head>
 <body>
 <a href="https://github.com/mirsaid-mirzohidov/blocknote/" target="_blank">
@@ -24,19 +24,13 @@
 <div class="container col-md-9">
        <form method="post" autocomplete="off">
             {% csrf_token %}
-            {{ article_form.title }}
-            {{ article_form.body }}
+            {{ form.title }}
+            {{ form.body }}
             {% if article.title|length < 0 %}
            	  <span>{{error}}</span>
             {% endif %}
 
             <input type="submit" value="Publish" align="center" class="btn btn-outline-dark">
-        {% if article.title|length > 0 %}
-          <div class="width-50">
-            <input id="input" type="text" value="{{request.build_absolute_uri}}" class="hidden" />
-            <span id="clipboardCopy" class="btn btn-outline-{{color}}"> Copy link </span>
-          </div>  
-        {% endif %}
         </form>
 </div>
 </div>

@@ -1,52 +1,44 @@
 import time
-
-from django.shortcuts import render, redirect
-from django.views.generic.base import View
-from django.http import HttpResponseRedirect
-from django.views.generic.edit import FormView
-
-from django.urls import reverse_lazy
 from django.utils.text import slugify
+from django.shortcuts import render, redirect
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView
+from django.urls import reverse_lazy
+from django.http import HttpResponseRedirect
+
 from django.contrib.auth.views import LoginView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import authenticate, login, logout
 
 from .models import Article
 from .forms import ArticleEditForm, UserCreationForm
+from .services import generate_url
 
 
-def ListView(request):
-    get_all_posts = Article.objects.filter(author=request.user).all().order_by("-created_date")
-    data = {
-        'article': get_all_posts
-    }
-    return render(request, 'main/blog.html', data)
+class ArticleList(LoginRequiredMixin, ListView):
+	model = Article
+	context_object_name = 'articles'
 
-def Create(request):
-    if request.user.is_authenticated:
-        error = ''
-        if request.method == 'POST':
-            article_form = ArticleEditForm(request.POST)
-            # check whether it's valid:
-            if article_form.is_valid():
-                Article.objects.update_or_create(
-                    title=request.POST.get("title"),
-                    body=request.POST.get("body"),
-                    author=request.user,
-                    url=slugify(request.POST.get("title") + "-" + str(time.strftime("%m-%d")))
-                )
-                return HttpResponseRedirect(slugify(request.POST.get("title") + "-" + str(time.strftime("%m-%d"))))
-            else:
-                error = 'Form is invalid'
-        article_form = ArticleEditForm()
-        data = {
-            'article_form': article_form,
-            'error': error,
-            'color': 'dark'
-            }
-        
-        return render(request, 'main/index.html', data)
-    else:
-        return redirect('login')
+
+class ArticleDetail(LoginRequiredMixin, DetailView):
+    model = Article
+    context_object_name = 'article'
+    template_name = 'main/article.html'
+
+
+class ArticleCreate(LoginRequiredMixin, CreateView):
+	template_name = 'main/create.html'
+	form_class = ArticleEditForm
+
+	def form_valid(self, form):
+		Article.objects.update_or_create(
+			title=self.request.POST.get("title"),
+			body=self.request.POST.get("body"),
+			author=self.request.user,
+			url=slugify(self.request.POST.get("title") + "-" + str(time.strftime("%m-%d")))
+			)
+		return HttpResponseRedirect(slugify(self.request.POST.get("title") + "-" + str(time.strftime("%m-%d"))))
 
 
 class CustomLoginView(LoginView):

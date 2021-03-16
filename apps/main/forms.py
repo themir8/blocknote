@@ -2,7 +2,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import password_validation
 from django import forms
-from django_editorjs_fields.widgets import EditorJsWidget
+from tinymce.widgets import TinyMCE
 from .models import Article
 
 
@@ -55,5 +55,5 @@ class ArticleEditForm(forms.ModelForm):
     				'class': 'form-control form-title',
     				'placeholder': 'Title',
     			}),
-    		"body": EditorJsWidget()
-    	}
+    		"body": TinyMCE(attrs={'cols': 80, 'rows': 30})
+            }
