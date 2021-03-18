@@ -13,11 +13,6 @@
   {{ form.media }}
 </head>
 <body>
-<a href="https://github.com/mirsaid-mirzohidov/blocknote/" target="_blank">
-  <img alt="GitHub Repository." src='{% static "main/GitHub-logo.png" %}' height="30" class="github-logo">
-  <img src="https://media.giphy.com/media/Jmsr7KdgwnzjMUkva8/giphy.gif" height="100" class="click-here">
-</a>
-<!--  -->
   <h1 class="heading">BlockNote</h1>
 <div class="row">
 {% include "include/sidebar.html" %}
@@ -29,8 +24,8 @@
             {% if article.title|length < 0 %}
            	  <span>{{error}}</span>
             {% endif %}
-
             <input type="submit" value="Publish" align="center" class="btn btn-outline-dark">
+
         </form>
 </div>
 </div>

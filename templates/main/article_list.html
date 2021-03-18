@@ -71,19 +71,21 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
-        
-        {% for el in article %}
-          <div class="post-preview">
-            <a href="/{{ el.url }}">
-              <h2 class="post-title">
-                {{el.title}}
-              </h2>
-            </a>
-            <p class="post-meta">Posted
-              on {{el.created_date|date:"F d, Y"}}</p>
-          </div>
-          <hr>
-        {% endfor %}
+
+          {% for el in articles %}
+            {% if request.user == el.author %}
+              <div class="post-preview">
+                <a href="/{{ el.url }}">
+                  <h2 class="post-title">
+                    {{el.title}}
+                  </h2>
+                </a>
+                <p class="post-meta">Posted
+                  on {{el.created_date|date:"F d, Y"}}</p>
+              </div>
+              <hr>
+            {% endif %}
+          {% endfor %}
         
 
         <!-- Pager -->
@@ -103,23 +105,7 @@
         <div class="col-lg-8 col-md-10 mx-auto">
           <ul class="list-inline text-center">
             <li class="list-inline-item">
-              <a href="#">
-                <span class="fa-stack fa-lg">
-                  <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#">
-                <span class="fa-stack fa-lg">
-                  <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#">
+              <a href="https://github.com/mirsaid-mirzohidov/blocknote/" target="blank">
                 <span class="fa-stack fa-lg">
                   <i class="fas fa-circle fa-stack-2x"></i>
                   <i class="fab fa-github fa-stack-1x fa-inverse"></i>
