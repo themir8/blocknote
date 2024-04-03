@@ -43,7 +43,7 @@
 ### Development requires
 
 * [Python 3.8.0](https://www.python.org/downloads/release/python-380/)
-* [Django 3](https://www.djangoproject.com/) 
+* [Django 3](https://www.djangoproject.com) 
 * [Editor.js](https://pypi.org/project/django-editorjs-fields/)  
 
 
